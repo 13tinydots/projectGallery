@@ -1,5 +1,6 @@
-const sequelize = require("../config/connection");
-const { User, Comment } = require("../models");
+import sequelize from "sequelize";
+import Comment from "../models/Comment.js";
+import User from "../models/User.js";
 
 const userData = require("./userData.json");
 const comment = require("./comment.json");
@@ -8,12 +9,16 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
   console.log("Seeding database");
 
-  userData.forEach(async (user) => {
-    await User.create(user);
+  // eslint-disable-next-line no-unused-vars
+  const seedUsers = await User.bulkCreate(userData, {
+    individualHooks: true,
+    returning: true,
   });
 
-  comment.forEach(async (comment) => {
-    await Comment.create(comment);
+  // eslint-disable-next-line no-unused-vars
+  const seedCharacters = await Comment.bulkCreate(comment, {
+    individualHooks: true,
+    returning: true,
   });
 
   process.exit(0);

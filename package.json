@@ -6,7 +6,8 @@
   "main": "app/index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon -I --watch app"
+    "start": "nodemon -I --watch app",
+    "seed": "node --experimental-json-modules ./seeds/seed.js"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
