@@ -1,6 +1,7 @@
+import dotenv from "dotenv";
 import Sequelize from "sequelize";
-
 let sequelize;
+dotenv.config();
 
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
