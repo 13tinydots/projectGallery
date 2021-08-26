@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
-const router = require("express").Router();
-const { User } = require("../../models");
 import bcrypt from "bcryptjs";
+import express from "express";
+import { default as User } from "../../models";
+const router = express.Router();
 // import withAuth from "../../utils/auth";
 
 // updated with signup route - redirects to home page

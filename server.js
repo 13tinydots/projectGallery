@@ -1,12 +1,12 @@
-const path = require("path");
-const express = require("express");
-const session = require("express-session");
-const exphbs = require("express-handlebars");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-const routes = require("./controllers");
-const sequelize = require("./config/connection");
-const helpers = require("./utils/helpers");
+import SequelizeStore from "connect-session-sequelize";
+import express from "express";
+import exphbs from "express-handlebars";
+import session from "express-session";
+import path from "path";
+import sequelize from "./config/connection";
+import routes from "./controllers";
+import helpers from "./utils/helpers";
+sequelize.session.Store = SequelizeStore(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
