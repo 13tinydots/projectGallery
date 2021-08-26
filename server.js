@@ -3,9 +3,9 @@ import express from "express";
 import exphbs from "express-handlebars";
 import session from "express-session";
 import path from "path";
-import sequelize from "./config/connection";
-import routes from "./controllers/routes";
-import helpers from "./utils/helpers";
+import sequelize from "../projectGallery/config/connection.js";
+import routes from "./controllers/routes.js";
+// import helpers from "./utils/helpers.js";
 sequelize.session.Store = SequelizeStore(session.Store);
 
 const app = express();
@@ -27,12 +27,11 @@ const sess = {
 
 app.use(session(sess));
 
+// eslint-disable-next-line no-undef
 const hbs = exphbs.create({ helpers });
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-// // daves idea
-// app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 

@@ -1,8 +1,8 @@
-import sequelize from "../config/connection";
+import sequelize from "../config/connection.js";
 // import Comment from "../models/Comment.js";
 import User from "../models/User.js";
+import userData from "./userData.json";
 
-const userData = require("./userData.json");
 // const comment = require("./comment.json");
 
 const seedDatabase = async () => {

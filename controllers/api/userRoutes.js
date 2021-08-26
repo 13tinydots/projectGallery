@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
-import bcrypt from "bcryptjs";
-import express from "express";
-import { default as User } from "../../models";
+import bcrypt from "bcrypt";
+import { default as User } from "../../models/User.js";
+import express from "../api/index.js";
 const router = express.Router();
 // import withAuth from "../../utils/auth";
 
@@ -16,6 +16,20 @@ router.post("/signup", async (req, res) => {
 
       res.status(200).json(userData);
       res.redirect("/");
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// update a GET route that does not require authentication for the main.handlebars page
+router.get("/", async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    res.status(200).json(userData);
+
+    res.render("main", {
+      user: req.user,
     });
   } catch (err) {
     res.status(400).json(err);
@@ -82,4 +96,4 @@ router.post("/logout", (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
