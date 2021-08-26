@@ -1,4 +1,4 @@
-import sequelize from "sequelize";
+import sequelize from "../config/connection";
 // import Comment from "../models/Comment.js";
 import User from "../models/User.js";
 

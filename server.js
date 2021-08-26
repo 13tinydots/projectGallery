@@ -4,7 +4,7 @@ import exphbs from "express-handlebars";
 import session from "express-session";
 import path from "path";
 import sequelize from "./config/connection";
-import routes from "./controllers";
+import routes from "./controllers/routes";
 import helpers from "./utils/helpers";
 sequelize.session.Store = SequelizeStore(session.Store);
 

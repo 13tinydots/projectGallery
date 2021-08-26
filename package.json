@@ -1,9 +1,6 @@
 {
-  "engines": {
-    "node": ">=14.7.3"
-  },
   "private": true,
-  "main": "app/index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "nodemon -I --watch app",
