@@ -1,12 +1,12 @@
-import SequelizeStore from "connect-session-sequelize";
+import connectSessionSequelize from "connect-session-sequelize";
 import express from "express";
-import exphbs from "express-handlebars";
 import session from "express-session";
-import path from "path";
-import sequelize from "../projectGallery/config/connection.js";
+import sequelize from "./config/connection.js";
 import routes from "./controllers/routes.js";
 // import helpers from "./utils/helpers.js";
-sequelize.session.Store = SequelizeStore(session.Store);
+// sequelize.session.Store = SequelizeStore(session.Store);
+const SequelizeStore = connectSessionSequelize(session.Store);
+console.log(SequelizeStore);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,15 +27,14 @@ const sess = {
 
 app.use(session(sess));
 
-// eslint-disable-next-line no-undef
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+// app.engine("handlebars", hbs.engine);
+// app.set("view engine", "handlebars");
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
 

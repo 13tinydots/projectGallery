@@ -1,7 +1,6 @@
-/* eslint-disable camelcase */
 import bcrypt from "bcrypt";
+import express from "express";
 import { default as User } from "../../models/User.js";
-import express from "../api/index.js";
 const router = express.Router();
 // import withAuth from "../../utils/auth";
 
